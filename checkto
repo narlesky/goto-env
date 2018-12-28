@@ -1,0 +1,4 @@
+#!/bin/bash
+workon $WINDOWENV
+clear
+cleanto

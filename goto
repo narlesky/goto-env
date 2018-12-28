@@ -1,0 +1,30 @@
+#!/bin/bash
+VIRTUALENV="$1"
+
+if [ "$1" == "hello"  ]; then
+	echo "hello world"
+
+elif [ "$1" == "example" ]; then
+	DESTINATION="${GOTO_HOME}/example-project/"
+
+elif [ "$1" == "intranet" ]; then
+	VIRTUALENV="intranet"
+	DESTINATION="${GOTO_HOME}/mbk-intranet/"
+
+elif [ "$1" == "library" ]; then
+	VIRTUALENV="intranet"
+	DESTINATION="${GOTO_HOME}/mbk-library/"
+
+elif [ "$1" == "resops" ]; then
+	DESTINATION="${GOTO_HOME}/resops/folsom"
+
+else
+	echo "Make virtual environment $1 with `\$ mkvirtualenv $1`"
+	echo "Changing Directory to GOTO_HOME=${GOTO_HOME}"
+	VIRTUALENV=""
+	DESTINATION="${GOTO_HOME}/"
+fi
+
+echo -e "\nexport WINDOWENV=${VIRTUALENV}">>~/.bash_profile
+source ~/.bash_profile
+open -a Terminal $DESTINATION

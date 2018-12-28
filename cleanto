@@ -1,0 +1,5 @@
+#!/bin/bash
+sed -i '' "s/export WINDOWENV=.*//g" ~/.bash_profile
+sed -i '' "/^$/d" ~/.bash_profile
+source ~/.bash_profile
+clear
