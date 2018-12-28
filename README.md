@@ -24,7 +24,7 @@ $ touch ~/.bash_profile
 The `GOTO_HOME` system variable should be the base path for where you store your projects, or a directory for `goto` to default to if no valid environment is supplied.
 ```bash
 $ touch ~/.bash_profile
-$ echo -e "\nexport ">>~/.bash_profile
+$ echo -e "\nexport GOTO_HOME=/your/file/directory/">>~/.bash_profile
 ```
 or open the `.bash_profile` in the default text editor with `$ open ~/.bash_profile` and type `export GOTO_HOME=/your/file/directory/` into the file directly.
 
@@ -51,20 +51,19 @@ elif [ "$1" == "resops" ]; then
 	DESTINATION="${GOTO_HOME}/resops/folsom"
 ```
 
-### 4. Copy the `checkto`, `goto` and `cleanto` scripts to `/usr/local/bin/`
+### 4. Copy the `goto` and `cleanto` scripts to `/usr/local/bin/`
 
 Modify the file permissions for each script to allow use as an executable
 ```bash
 $ cd /usr/local/bin/
 $ chmod 711 goto
 $ chmod 711 cleanto
-$ chmod 711 checkto
 ```
 
 ### 5. Edit Terminal Preferences
 1. Open the Terminal app Preferences menu
 2. Select the Terminal profile for which you'd like to enable *__GOTO-ENV__* (for best results this should be the profile that Terminal defaults to when you start the app)
-3. Under the tab titled _*Shell*_, add `checkto` to *_Run Command_*
+3. Under the tab titled _*Shell*_, add `workon $WINDOWENV; cleanto; clear` to *_Run Command_*
 4. check the boxes next to "Run Command" and "Run inside shell"
 5. this command activates the virtual environment set by the `goto` script in the new Terminal window with **virtualenvwrapper**'s `workon`, then cleans up the `.bash_profile` with `cleanto`.
 6. Quit Terminal
