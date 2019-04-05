@@ -68,12 +68,34 @@ $ chmod 711 cleanto
 5. this command activates the virtual environment set by the `goto` script in the new Terminal window with **virtualenvwrapper**'s `workon`, then cleans up the `.bash_profile` with `cleanto`.
 6. Quit Terminal
 
+### 6. Extend with Sublime CLI
+Install the Sublime Text CLI documented at https://www.sublimetext.com/docs/3/osx_command_line.html to add support for automatically opening a Sublime Text window in the `goto` destination directory.
+
+Open the Terminal and run to create a symlink `subl` for the Sublime Text CLI.
+```bash
+$ ln -s "/Applications/Sublime Text.app/Contents/SharedSupport/bin/subl" ~/bin/subl
+```
+Update the Bash Profile PATH variable by adding the following to `.bash_profile`:
+```bash
+export PATH=$HOME/bin:$PATH
+```
+
+Add the following to the end of `goto`:
+```bash
+if [ "$2" == "-s"  ]; then
+	subl -n -a $DESTINATION
+fi
+```
+This opens a new Sublime window in the target directory when `goto` is invoked from the command line with the argument `-s`.
+
 ## Usage 
 Configuring the `goto` script enables you to change directories to the project directory most commonly used with a given virtual environment.  This handy shortcut takes the place of `workon example` followed by `$ cd /your/file/directory/`.
 
 Open Terminal with the updated profile and run:
 ```bash
-$ goto example
+$ goto example -s
 ```
 Result:
-Changes directory to the project directory configured in `goto` then activates the `example` virtual environment.  If a non-existent virtual environment name is supplied, no virtual enviroment will be activated.  However, the directory will still be changed to the location specified in `$GOTO_HOME`.
+Changes directory to the project directory configured in `goto` then activates the `example` virtual environment.  If the optional `-s` flag is included, a new Sublime window will be opened in the project directory.  If a non-existent virtual environment name is supplied, no virtual enviroment will be activated.  However, the directory will still be changed to the location specified in `$GOTO_HOME`.
+
+

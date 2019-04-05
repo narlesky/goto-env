@@ -1,5 +1,6 @@
 #!/bin/bash
 VIRTUALENV="$1"
+OPEN_SUBLIME="$2"
 
 if [ "$1" == "hello"  ]; then
 	echo "hello world"
@@ -28,3 +29,7 @@ fi
 echo -e "\nexport WINDOWENV=${VIRTUALENV}">>~/.bash_profile
 source ~/.bash_profile
 open -a Terminal $DESTINATION
+
+if [ "$2" == "-s"  ]; then
+	subl -n -a $DESTINATION
+fi
