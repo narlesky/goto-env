@@ -73,7 +73,7 @@ Install the Sublime Text CLI documented at https://www.sublimetext.com/docs/3/os
 
 Open the Terminal and run to create a symlink `subl` for the Sublime Text CLI.
 ```bash
-$ ln -s "/Applications/Sublime Text.app/Contents/SharedSupport/bin/subl" ~/bin/subl
+$ ln -s "/Applications/Sublime Text.app/Contents/SharedSupport/bin/subl" /usr/local/bin/subl
 ```
 Update the Bash Profile PATH variable by adding the following to `.bash_profile`:
 ```bash
