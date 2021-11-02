@@ -98,4 +98,8 @@ $ goto example -s
 Result:
 Changes directory to the project directory configured in `goto` then activates the `example` virtual environment.  If the optional `-s` flag is included, a new Sublime window will be opened in the project directory.  If a non-existent virtual environment name is supplied, no virtual enviroment will be activated.  However, the directory will still be changed to the location specified in `$GOTO_HOME`.
 
-
+## MacOS Monterey
+You may need to update the permissions on /usr/bin/local/ in OS 14 with
+```bash
+$ sudo chown -R $(whoami) /usr/local/bin
+```
