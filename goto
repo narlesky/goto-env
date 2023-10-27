@@ -5,19 +5,21 @@ OPEN_SUBLIME="$2"
 if [ "$1" == "hello"  ]; then
 	echo "hello world"
 
+elif [ "$1" == "mbk" ]; then
+	VIRTUALENV=""
+	DESTINATION="${GOTO_HOME}"
+
 elif [ "$1" == "example" ]; then
 	DESTINATION="${GOTO_HOME}/example-project/"
 
-elif [ "$1" == "intranet" ]; then
-	VIRTUALENV="intranet"
-	DESTINATION="${GOTO_HOME}/mbk-intranet/"
+elif [ "$1" == "collect" ]; then
+	DESTINATION="${GOTO_HOME}/collect/"
 
-elif [ "$1" == "library" ]; then
-	VIRTUALENV="intranet"
-	DESTINATION="${GOTO_HOME}/mbk-library/"
+elif [ "$1" == "dispatch" ]; then
+	DESTINATION="${GOTO_HOME}/dispatch/"
 
 elif [ "$1" == "resops" ]; then
-	DESTINATION="${GOTO_HOME}/resops/folsom"
+	DESTINATION="${GOTO_HOME}/resops/resops/"
 
 else
 	echo "Make virtual environment $1 with `\$ mkvirtualenv $1`"
@@ -26,8 +28,8 @@ else
 	DESTINATION="${GOTO_HOME}/"
 fi
 
-echo -e "\nexport WINDOWENV=${VIRTUALENV}">>~/.bash_profile
-source ~/.bash_profile
+echo -e "\nexport WINDOWENV=${VIRTUALENV}">>~/.zshrc
+source ~/.zshrc
 open -a Terminal $DESTINATION
 
 if [ "$2" == "-s"  ]; then
